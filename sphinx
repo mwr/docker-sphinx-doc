@@ -1,0 +1,4 @@
+#!/bin/zsh
+# USAGE: d.sphinx "__COMMAND__"
+
+docker exec sphinx-1.2b1 bash -c "cd $PWD && $@"

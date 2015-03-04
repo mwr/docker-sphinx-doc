@@ -1,0 +1,16 @@
+
+# docker run -it -w /Shared/mwdental/sepia_pim/ -v /Users/matthias/Shared:/Shared mwltr/sphinx:1.2b1 'make latexpdf > /dev/null'
+
+# docker run -it -d --name sphinx-1.2b1 -v /Volumes/Data/:/Volumes/Data/ mwltr/sphinx:1.2b1
+
+
+# Mount Data from boot2cocker to Data on Sphinx 
+docker run -itd --name sphinx-1.2b1 -v /Data/:/Data/ mwltr/sphinx:1.2b1
+docker exec sphinx-1.2b1 bash -c 'cd /Data/Entwicklung/code/netz98/medewo/schnittstellen-spezifikation/navision/ && make latexpdf'
+
+# DATA
+docker run -itd --name sphinx-1.2b1 -v /Volumes/Data/:/Volumes/Data/ mwltr/sphinx:1.2b1
+docker run -itd --name sphinx-1.2b1 --volumes-from data-volume mwltr/sphinx:1.2b1 # with data volume
+
+docker start sphinx-1.2b1
+docker exec sphinx-1.2b1 bash -c 'cd /Volumes/Data/Entwicklung/code/netz98/medewo/schnittstellen-spezifikation/navision/ && make latexpdf'
