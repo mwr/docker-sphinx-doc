@@ -1,6 +1,10 @@
-handover paramters for docker image:
-1. path
-2. command
-3. parameters
+USAGE: 
 
-http://stackoverflow.com/questions/1537673/how-do-i-forward-parameters-to-other-command-in-bash-script
+# Build image
+docker build .
+
+# run with mount data-volume 
+docker run -itd --name sphinx-1.2b1 --volumes-from data-volume mwltr/sphinx:1.2b1 # with data volume
+
+# run a command at the "mirrored" working-dir (pwd)
+sphinx "__COMMAND__"
